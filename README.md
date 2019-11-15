@@ -27,7 +27,7 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
-> Answer:
+> Answer: client-side routing is a a javascript routing option that gives you control over your site's url without you having to wait for a server to respond.
 
 ## Project Set Up
 
