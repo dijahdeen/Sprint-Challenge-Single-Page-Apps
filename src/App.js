@@ -1,8 +1,7 @@
 import React from "react";
 import Header from "./components/Header.js";
 import CharacterList from './components/CharacterList';
-import { BrowerRouter as Router, Route, Link } from 'react-router-dom';
-import CharacterCard from "./components/CharacterCard.js";
+import { Route, Link } from 'react-router-dom';
 import WelcomePage from "./components/WelcomePage.js";
 
 export default function App() {
