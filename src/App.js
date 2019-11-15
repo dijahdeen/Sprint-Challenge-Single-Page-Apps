@@ -3,17 +3,34 @@ import Header from "./components/Header.js";
 import CharacterList from './components/CharacterList';
 import { Route, Link } from 'react-router-dom';
 import WelcomePage from "./components/WelcomePage.js";
+import Styled from 'styled-components';
+
+const NavBar = Styled(Link)`
+text-decoration: none;
+color: white;
+font-size: 150%;
+margin-right: 2%;
+margin-top: 15%;
+margin-left: 10%;
+
+&:hover {
+  text-decoration: underline;
+  background-color: black;
+}
+
+
+`
 
 export default function App() {
   return (
     <div>
       <nav>
-        <div className="nav-links">
-          <Link className="some-link" to="/">
-            Home
-          </Link>
-          <Link to="/char/:id">Character Card </Link>
-        </div>
+
+        <NavBar className="some-link" to="/">
+          Home
+          </NavBar>
+        <NavBar to="/char/:id">Character Card </NavBar>
+
       </nav>
 
       <main>

@@ -1,6 +1,45 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Styled from 'styled-components';
+
+
+const CharCard = Styled.div`
+border: black 2px dotted;
+margin-bottom: 2%;
+background-color: hotpink;
+text-decoration: none;
+color: white;
+width: 50%;
+text-align : center;
+margin-left: 25%
+box-shadow: gray 5px 10px;
+border-radius: 12px;
+
+`
+const SearchBox = Styled.input`
+border: black 1px solid;
+width: 50%;
+height: 5vh;
+margin-left: 25%;
+margin-right:25%;
+color: white;
+font-weight: bold;
+font-size: 100%;
+background-color:black;
+margin-bottom: 5%;
+
+`
+const Number = Styled.h2`
+display: flex;
+justify-content: flex-end;
+padding-right: 5%;
+`
+const CharText = Styled.div`
+ 
+ 
+ 
+`
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -18,8 +57,8 @@ export default function CharacterList() {
         .then(response => {
           const characters = response.data.results.filter(character =>
             character.name.toLowerCase().includes(Search.toLowerCase()));
-          setCharlist(response.data.results);
-          console.log(response.data.results);
+          setCharlist(characters);
+          console.log(characters);
         })
         .catch(error => {
           console.error('Server Error', error);
@@ -35,7 +74,7 @@ export default function CharacterList() {
   return (
     <>
       <form className="search">
-        <input
+        <SearchBox
           type="text"
           onChange={handleInputChange}
           value={Search}
@@ -53,9 +92,9 @@ export default function CharacterList() {
         <h2></h2>
         {
           Charlist.map(Chars => (
-            <Link to={`/char/ ${Chars.id}`}>
-              <CharDetails key={Chars.id} Chars={Chars} />
-            </Link>
+            // <Link to={`/char/ ${Chars.id}`}>
+            <CharDetails key={Chars.id} Chars={Chars} />
+            // </Link>
           ))
         }
       </section >
@@ -65,19 +104,19 @@ export default function CharacterList() {
 function CharDetails({ Chars }) {
   const { id, name, species, status } = Chars;
   return (
-    <div className="Char-card">
-      <h2>{id}</h2>
-      <div className="Char-name">
-        <h1>Name</h1>:{name}
-      </div>
-      <div className="Char-species">
-        <h1>Species</h1>: {species}
-      </div>
+    <CharCard className="Char-card">
+      <Number>{id}</Number>
+      <CharText>
+        <h1>Name: {name}</h1>
+      </CharText>
+      <CharText>
+        <h1>Species: {species}</h1>
+      </CharText>
 
-      <div className="Char-status">
-        <h1>Status</h1>: {status}
-      </div>
-    </div>
+      <CharText>
+        <h1>Status: {status}</h1>
+      </CharText>
+    </CharCard>
   );
 }
 
