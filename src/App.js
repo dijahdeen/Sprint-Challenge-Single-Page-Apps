@@ -1,11 +1,31 @@
 import React from "react";
 import Header from "./components/Header.js";
-
+import CharacterList from './components/CharacterList';
+import { BrowerRouter as Router, Route, Link } from 'react-router-dom';
+import CharacterCard from "./components/CharacterCard.js";
+import WelcomePage from "./components/WelcomePage.js";
 
 export default function App() {
   return (
-    <main>
-      <Header />
-    </main>
+    <div>
+      <nav>
+        <div className="nav-links">
+          <Link className="some-link" to="/">
+            Home
+          </Link>
+          <Link to="/char/:id">Character Card </Link>
+        </div>
+      </nav>
+
+      <main>
+        <Header />
+        {/* <CharacterCard />
+        <CharacterList />  */}
+
+
+        <Route exact path="/" component={WelcomePage} />
+        <Route exact path="/char/:id" component={CharacterList} />
+      </main>
+    </div>
   );
 }
